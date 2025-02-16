@@ -3,7 +3,7 @@ import { client } from "@/app/client";
 import Link from "next/link";
 import { ConnectButton, lightTheme, useActiveAccount } from "thirdweb/react";
 import Image from "next/image";
-import logo from "@public/HCMUT_official_logo.png";
+import logo from "../app/HCMUT_official_logo.png";
 
 const Navbar = () => {
   const account = useActiveAccount();
