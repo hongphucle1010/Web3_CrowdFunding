@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Ứng dụng Web3 demo trang web gây quỹ - Kiến trúc Phần mềm",
     icons: {
-      icon: "HCMUT_official_logo.png",
+      icon: "./HCMUT_official_logo.png",
     }
 };
 
