@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "HCMUT_NightOwls | Web gây quỹ với Web3 ",
   description:
     "Ứng dụng Web3 demo trang web gây quỹ - Kiến trúc Phần mềm",
+    icons: {
+      icon: "/HCMUT_official_logo.png",
+    }
 };
 
 export default function RootLayout({
