@@ -24,7 +24,7 @@ export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEdi
                 </div>
             </div>
             <div className="flex flex-row justify-between items-end">
-                <p className="text-xs font-semibold">Total Backers: {tier.backers.toString()}</p>
+                <p className="text-xs font-semibold">Tổng số người ủng hộ: {tier.backers.toString()}</p>
                 <TransactionButton
                     transaction={() => prepareContractCall({
                         contract: contract,
@@ -32,8 +32,8 @@ export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEdi
                         params: [BigInt(index)],
                         value: tier.amount,
                     })}
-                    onError={(error) => alert(`Error: ${error.message}`)}
-                    onTransactionConfirmed={async () => alert("Funded successfully!")}
+                    onError={(error) => alert(`Lỗi: ${error.message}`)}
+                    onTransactionConfirmed={async () => alert("Tài trợ thành công!")}
                     style={{
                         marginTop: "1rem",
                         backgroundColor: "#2563EB",
@@ -42,7 +42,7 @@ export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEdi
                         borderRadius: "0.375rem",
                         cursor: "pointer",
                     }}
-                >Select</TransactionButton>
+                >Chọn</TransactionButton>
             </div>
             {isEditing && (
                 <TransactionButton
@@ -51,8 +51,8 @@ export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEdi
                         method: "function removeTier(uint256 _index)",
                         params: [BigInt(index)],
                     })}
-                    onError={(error) => alert(`Error: ${error.message}`)}
-                    onTransactionConfirmed={async () => alert("Removed successfully!")}
+                    onError={(error) => alert(`Lỗi: ${error.message}`)}
+                    onTransactionConfirmed={async () => alert("Xóa thành công!")}
                     style={{
                         marginTop: "1rem",
                         backgroundColor: "red",
@@ -61,7 +61,7 @@ export const TierCard: React.FC<TierCardProps> = ({ tier, index, contract, isEdi
                         borderRadius: "0.375rem",
                         cursor: "pointer",
                     }}
-                >Remove</TransactionButton>
+                >Xóa</TransactionButton>
             )}
         </div>
     )

@@ -99,32 +99,32 @@ export default function CampaignPage() {
                     <div className="flex flex-row">
                         {isEditing && (
                             <p className="px-4 py-2 bg-gray-500 text-white rounded-md mr-2">
-                                Status:  
-                                {status === 0 ? " Active" : 
-                                status === 1 ? " Successful" :
-                                status === 2 ? " Failed" : "Unknown"}
+                                Trạng thái:  
+                                {status === 0 ? " Đang hoạt động" : 
+                                status === 1 ? " Thành công" :
+                                status === 2 ? " Thất bại" : "Không rõ"}
                             </p>
                         )}
                         <button
                             className="px-4 py-2 bg-blue-500 text-white rounded-md"
                             onClick={() => setIsEditing(!isEditing)}
-                        >{isEditing ? "Done" : "Edit"}</button>
+                        >{isEditing ? "Xong" : "Chỉnh sửa"}</button>
                     </div>
                 )}
             </div>
             <div className="my-4">
-                <p className="text-lg font-semibold">Description:</p>
+                <p className="text-lg font-semibold">Mô tả:</p>
                 <p>{description}</p>
             </div>
             <div className="mb-4">
-                <p className="text-lg font-semibold">Deadline</p>
+                <p className="text-lg font-semibold">Deadline:</p>
                 {!isLoadingDeadline && (
                     <p>{deadlineDate.toDateString()}</p>
                 )}
             </div>
             {!isLoadingBalance && (
                 <div className="mb-4">
-                    <p className="text-lg font-semibold">Campaign Goal: ${goal?.toString()}</p>
+                    <p className="text-lg font-semibold">Mục tiêu chiến dịch: ${goal?.toString()}</p>
                     <div className="relative w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700">
                         <div className="h-6 bg-blue-600 rounded-full dark:bg-blue-500 text-right" style={{ width: `${balancePercentage?.toString()}%`}}>
                             <p className="text-white dark:text-white text-xs p-1">${balance?.toString()}</p>
@@ -137,10 +137,10 @@ export default function CampaignPage() {
                 
             )}
             <div>
-                <p className="text-lg font-semibold">Tiers:</p>
+                <p className="text-lg font-semibold">Các cấp độ:</p>
                 <div className="grid grid-cols-3 gap-4">
                     {isLoadingTiers ? (
-                        <p >Loading...</p>
+                        <p >Đang tải...</p>
                     ) : (
                         tiers && tiers.length > 0 ? (
                             tiers.map((tier, index) => (
@@ -154,7 +154,7 @@ export default function CampaignPage() {
                             ))
                         ) : (
                             !isEditing && (
-                                <p>No tiers available</p>
+                                <p>Không có cấp độ nào</p>
                             )
                         )
                     )}
@@ -163,7 +163,7 @@ export default function CampaignPage() {
                         <button
                             className="max-w-sm flex flex-col text-center justify-center items-center font-semibold p-6 bg-blue-500 text-white border border-slate-100 rounded-lg shadow"
                             onClick={() => setIsModalOpen(true)}
-                        >+ Add Tier</button>
+                        >+ Thêm cấp độ</button>
                     )}
                 </div>
             </div>
@@ -193,22 +193,22 @@ const CreateCampaignModal = (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center backdrop-blur-md">
             <div className="w-1/2 bg-slate-100 p-6 rounded-md">
                 <div className="flex justify-between items-center mb-4">
-                    <p className="text-lg font-semibold">Create a Funding Tier</p>
+                    <p className="text-lg font-semibold">Tạo cấp độ tài trợ</p>
                     <button
                         className="text-sm px-4 py-2 bg-slate-600 text-white rounded-md"
                         onClick={() => setIsModalOpen(false)}
-                    >Close</button>
+                    >Đóng</button>
                 </div>
                 <div className="flex flex-col">
-                    <label>Tier Name:</label>
+                    <label>Tên cấp độ:</label>
                     <input 
                         type="text" 
                         value={tierName}
                         onChange={(e) => setTierName(e.target.value)}
-                        placeholder="Tier Name"
+                        placeholder="Tên cấp độ"
                         className="mb-4 px-4 py-2 bg-slate-200 rounded-md"
                     />
-                    <label>Tier Cost:</label>
+                    <label>Chi phí cấp độ:</label>
                     <input 
                         type="number"
                         value={parseInt(tierAmount.toString())}
@@ -222,12 +222,12 @@ const CreateCampaignModal = (
                             params: [tierName, tierAmount]
                         })}
                         onTransactionConfirmed={async () => {
-                            alert("Tier added successfully!")
+                            alert("Thêm cấp độ thành công!")
                             setIsModalOpen(false)
                         }}
-                        onError={(error) => alert(`Error: ${error.message}`)}
+                        onError={(error) => alert(`Lỗi: ${error.message}`)}
                         theme={lightTheme()}
-                    >Add Tier</TransactionButton>
+                    >Thêm cấp độ</TransactionButton>
                 </div>
             </div>
         </div>

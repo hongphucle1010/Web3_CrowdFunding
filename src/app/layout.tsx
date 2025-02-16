@@ -7,9 +7,9 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "thirdweb SDK + Next starter",
+  title: "HCMUT_NightOwls | Web gây quỹ với Web3 ",
   description:
-    "Starter template for using thirdweb SDK with Next.js App router",
+    "Ứng dụng Web3 demo trang web gây quỹ - Kiến trúc Phần mềm",
 };
 
 export default function RootLayout({

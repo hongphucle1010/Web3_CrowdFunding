@@ -29,13 +29,13 @@ export default function DashboardPage() {
     return (
         <div className="mx-auto max-w-7xl px-4 mt-16 sm:px-6 lg:px-8">
             <div className="flex flex-row justify-between items-center mb-8">
-                <p className="text-4xl font-semibold">Dashboard</p>
+                <p className="text-4xl font-semibold">Bảng điều khiển</p>
                 <button
                     className="px-4 py-2 bg-blue-500 text-white rounded-md"
                     onClick={() => setIsModalOpen(true)}
-                >Create Campaign</button>
+                >Tạo chiến dịch</button>
             </div>
-            <p className="text-2xl font-semibold mb-4">My Campaigns:</p>
+            <p className="text-2xl font-semibold mb-4">Chiến dịch của tôi:</p>
             <div className="grid grid-cols-3 gap-4">
                 {!isLoadingMyCampaigns && (
                     myCampaigns && myCampaigns.length > 0 ? (
@@ -46,7 +46,7 @@ export default function DashboardPage() {
                             />
                         ))
                     ) : (
-                        <p>No campaigns</p>
+                        <p>Hiện tại không có chiến dịch nào</p>
                     )
                 )}
             </div>
@@ -80,7 +80,7 @@ const CreateCampaignModal = (
     const handleDeployContract = async () => {
         setIsDeployingContract(true);
         try {
-            console.log("Deploying contract...");
+            console.log("Đang deploy hợp đồng...");
             const contractAddress = await deployPublishedContract({
                 client: client,
                 chain: baseSepolia,
@@ -92,10 +92,10 @@ const CreateCampaignModal = (
                     campaignGoal,
                     campaignDeadline
                 ],
-                publisher: "0xEe29620D0c544F00385032dfCd3Da3f99Affb8B2",
-                version: "1.0.6",
+                publisher: "0x36fd4Abc1E0bA7902a1018FD4EA922A13F3749e8",
+                version: "1.0.1",
             });
-            alert("Contract deployed successfully!");
+            alert("Hợp đồng được deploy thành công!");
         } catch (error) {
             console.error(error);
         } finally {
@@ -125,36 +125,36 @@ const CreateCampaignModal = (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center backdrop-blur-md">
             <div className="w-1/2 bg-slate-100 p-6 rounded-md">
                 <div className="flex justify-between items-center mb-4">
-                    <p className="text-lg font-semibold">Create a Campaign</p>
+                    <p className="text-lg font-semibold">Tạo chiến dịch</p>
                     <button
                         className="text-sm px-4 py-2 bg-slate-600 text-white rounded-md"
                         onClick={() => setIsModalOpen(false)}
-                    >Close</button>
+                    >Đóng</button>
                 </div>
                 <div className="flex flex-col">
-                    <label>Campaign Name:</label>
+                    <label>Tên chiến dịch:</label>
                     <input 
                         type="text" 
                         value={campaignName}
                         onChange={(e) => setCampaignName(e.target.value)}
-                        placeholder="Campaign Name"
+                        placeholder="Tên chiến dịch"
                         className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
                     />
-                    <label>Campaign Description:</label>
+                    <label>Mô tả chiến dịch:</label>
                     <textarea
                         value={campaignDescription}
                         onChange={(e) => setCampaignDescription(e.target.value)}
-                        placeholder="Campaign Description"
+                        placeholder="Mô tả chiến dịch"
                         className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
                     ></textarea>
-                    <label>Campaign Goal:</label>
+                    <label>Mục tiêu chiến dịch:</label>
                     <input 
                         type="number"
                         value={campaignGoal}
                         onChange={(e) => handleCampaignGoal(parseInt(e.target.value))}
                         className="mb-4 px-4 py-2 bg-slate-300 rounded-md"
                     />
-                    <label>{`Campaign Length (Days)`}</label>
+                    <label>{`Thời gian chiến dịch (Ngày)`}</label>
                     <div className="flex space-x-4">
                         <input 
                             type="number"
@@ -168,7 +168,7 @@ const CreateCampaignModal = (
                         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
                         onClick={handleDeployContract}
                     >{
-                        isDeployingContract ? "Creating Campaign..." : "Create Campaign"
+                        isDeployingContract ? "Đang tạo chiến dịch..." : "Tạo chiến dịch"
                     }</button>
                     
                 </div>
